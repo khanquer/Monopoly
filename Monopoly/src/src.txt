@@ -1,0 +1,41 @@
+TileID	Name			isProp	Type	C/Num	Cost	Cost/H	X1	X2	X3	X4
+00	Go			False	Go		
+01 	Med			True 	Col	Purple	60	20	
+02 	Comm			False 	Chest	
+03	Baltic_Ave		True	Col	Purple	80	20
+04	Income_Tax		False	Tax
+05	Reading_Railroad	True	Rail	1	200	0
+06	Oriental_Ave		True	Col	Blue	100	40
+07	Chance			False	Chest
+08	Vermont_Ave		True	Col	Blue	100	40
+09	Connecticut_Ave		True	Col	Blue	120	40
+10	Jail			False	Jail
+11	St._Charles_Place	True	Col	Pink	140	50
+12	Electric_Company	True	Util	1	150	
+13	States_Avenue		True	Col	Pink	140	50
+14	Virginia_Avenue		True	Col	Pink	160	50
+15	Pennsylvania_Railroad	True	Rail	2	200	
+16	St._James_Place		True	Col	Orange	180	60
+17	Community_Chest		False
+18	Tennessee_Avenue	True	Col	Orange	180	60
+19	New_York_Avenu		True	Col	Orange	200	60
+20	Free_Parking		False
+21	Kentucky_Avenue		True	Col	Red	220	70
+22	Chance			False
+23	Indiana_Avenue		True	Col	Red	220	70
+24	Illinois_Avenue		True	Col	Red	240	70
+25	B&O_Railroad		True	Rail	3	200
+26	Atlantic_Avenue		True	Col	Yellow	260	80
+27	Ventor_Avenue		True	Col	Yellow	260	80
+28	Water_Works		True	Util	2	150	
+29	Marvin_Gardens		True	Col	Yellow	280	80
+30	Go_To_Jail		False
+31	Pacific_Avenue		True	Col	Green	300	90
+32	North_Carolina_Avenue	True	Col	Green	300	90
+33	Community_Chest		False
+34	Pennsylvania_Avenue	True	Col	Green	320	90
+35	Short_Line		True	Rail	4	200	
+36	Chance			False
+37	Park_Place		True	Col	DBlue	380	100
+38	Luxury_Tax		False
+39	Boardwalk		True	Col	DBlue	400	100
