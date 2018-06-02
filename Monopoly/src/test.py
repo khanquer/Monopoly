@@ -4,6 +4,11 @@ from players import *
 import random
 #from classes import Prop
 
+RED = (255,0,0)
+BLUE = (0,255,0)
+GREEN = (0,0,255)
+BLACK = (0,0,0)
+WHITE = (255,255,255)
 
 def main():
 	#print ("Hello World")
@@ -36,12 +41,18 @@ def main():
 	Loop = True
 	TURN = 0
 	
+	sRoll = True
+	sBuy = True
+	sEnd = True
+	
 	drawCanvas(screen,tileList)
 	drawPlayers(screen,playerList)
+	drawButtons(screen,sRoll,sBuy,sEnd)
+	
 	while Loop:
 #		print('Loop')
 		for event in pygame.event.get():
-			print(event)
+#			print(event)
 			if event.type==pygame.QUIT:
 				pygame.quit()
 				sys.exit()
@@ -50,7 +61,8 @@ def main():
 				roll(screen,TURN,playerList)
 				TURN += 1
 				TURN = TURN%4
-				drawPlayers(screen,playerList)	
+				drawPlayers(screen,playerList)
+				drawButtons(screen,sRoll,sBuy,sEnd)
 			
 		pygame.display.update()
 		clock.tick(10)
@@ -78,7 +90,9 @@ def main():
 	
 #	print(tileList[0])
 
+
 def roll(screen,TURN, playerList):
+#GEN TO 2 RANDOM NUMBERS FOR THE DICE
 	num1 = random.randint(1,6)
 	num2 = random.randint(1,6)
 	num = num1 + num2
@@ -86,8 +100,28 @@ def roll(screen,TURN, playerList):
 	playerList[TURN].loc += num
 	playerList[TURN].loc = playerList[TURN].loc%40
 	sys_font = pygame.font.SysFont("None",30)
+	text1 = sys_font.render(str(num1),0,(0,0,0))
+	text2 = sys_font.render(str(num2),0,(0,0,0))
 	text = sys_font.render(str(num),0,(0,0,0))
-	screen.blit(text,(400,400))
+	screen.blit(text1,(250,300))
+	screen.blit(text2,(290,300))
+	screen.blit(text,(270,320))
+
+def drawButtons(screen,sRoll,sBuy,sEnd):	
+	color = RED
+	pygame.draw.rect(screen,color,pygame.Rect(260,500,120,60))
+	color = GREEN
+	pygame.draw.rect(screen,color,pygame.Rect(460,500,120,60))	
+	color = BLUE
+	pygame.draw.rect(screen,color,pygame.Rect(660,500,120,60))
+	color = WHITE
+	sys_font = pygame.font.SysFont("None",25)
+	text1 = sys_font.render('ROLL',0,WHITE)	
+	text2 = sys_font.render('BUY',0,WHITE)
+	text3 = sys_font.render('END',0,WHITE)
+	screen.blit(text1,(290,520))	
+	screen.blit(text2,(490,520))
+	screen.blit(text3,(690,520))
 
 	
 def drawPlayers(screen,playerList):
@@ -147,16 +181,18 @@ def drawCanvas(screen,tileList):
 	pygame.draw.rect(screen,color,pygame.Rect(160,120,720,2))
 	pygame.draw.rect(screen,color,pygame.Rect(920,160,2,720))
 	
+#Drawing the boundary Lines
 	for i in range(1,9):
 		pygame.draw.rect(screen,color,pygame.Rect(160+80*i,880,2,160))
 		pygame.draw.rect(screen,color,pygame.Rect(0,160+80*i,160,2))	
 		pygame.draw.rect(screen,color,pygame.Rect(160+80*i,0,2,160))
 		pygame.draw.rect(screen,color,pygame.Rect(880,160+80*i,160,2))
 
+#Tile Loop
 	for tile1 in tileList:
 		ID = tile1.tileID
 
-		
+#Drawing rectangles for the color props
 		if (type(tile1) is CProp):
 #			print(str(ID) + " IS CPROP " + tile1.color)
 			if (tile1.color == 'Purple'): color = (72,61,139)	
@@ -184,6 +220,7 @@ def drawCanvas(screen,tileList):
 				num = ID%10
 				pygame.draw.rect(screen,color,pygame.Rect(882,82+num*80,38,78))
 
+#WRITING THE TEXT
 		sys_font = pygame.font.SysFont("None",15)
 		text = sys_font.render(tile1.name,0,(0,0,0))
 
